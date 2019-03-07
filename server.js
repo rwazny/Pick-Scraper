@@ -2,7 +2,10 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var expressHandlebars = require('express-handlebars');
+var handlebars = require("handlebars");
 var bodyParser = require('body-parser');
+var request = require("request");
+var cheerio = require("cheerio");
 
 // Set up port 3000
 var PORT = process.env.PORT || 3000;
@@ -17,7 +20,7 @@ var router = express.Router();
 require('./config/route')(router);
 
 //Designate our Public folder as static directory
-app.use(express.static(__dirname + '/Public'));
+app.use(express.static('Public'));
 
 //Connect handlebars to Express app
 app.engine(
@@ -26,6 +29,7 @@ app.engine(
     defaultLayout: 'main'
   })
 );
+app.set("view engine","handlebars");
 
 //Use bodyParser in App
 app.use(
@@ -86,10 +90,25 @@ mongoose.connect(db, function(error) {
 // app.get('/articles/:id', function(req, res) {
 //   // TODO
 //   // ====
-//   // Finish the route so it finds one article using the req.params.id,
+//   // Finish the roerute so it finds one article using the req.params.id,
 //   // and run the populate method with "note",
 //   // then responds with the article with the note included
 // });
+
+app.get('/scrape', function(req, res) {
+  request("https://www.ultimate-guitar.com/news/", function(err, resonse, body){
+
+    var $ = cheerio.load(body);
+
+    var articles = [];
+
+    $("section.ug-featured--body").each(function(i, element){
+        console.log(element);
+    });
+});
+});
+
+
 
 // // Route for saving/updating an Article's associated Note
 // app.post('/articles/:id', function(req, res) {
