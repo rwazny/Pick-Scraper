@@ -1,5 +1,5 @@
 var scrape = require('../scripts/scrape');
-var makeDate = require('../scripts/date');
+var makeDate = require('../controllers/date');
 
 //Bring in the Headline and Note mongoose models
 var Headline = require('../models/Headline');

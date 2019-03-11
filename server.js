@@ -2,10 +2,11 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var expressHandlebars = require('express-handlebars');
-var handlebars = require("handlebars");
+var handlebars = require('handlebars');
 var bodyParser = require('body-parser');
-var request = require("request");
-var cheerio = require("cheerio");
+var request = require('request');
+var cheerio = require('cheerio');
+// var dateFormat = require('dateFormat');
 
 // Set up port 3000
 var PORT = process.env.PORT || 3000;
@@ -29,7 +30,7 @@ app.engine(
     defaultLayout: 'main'
   })
 );
-app.set("view engine","handlebars");
+app.set('view engine', 'handlebars');
 
 //Use bodyParser in App
 app.use(
@@ -84,8 +85,6 @@ mongoose.connect(db, function(error) {
 //   useNewUrlParser: true
 // });
 
-
-
 // // Route for grabbing a specific Article by id, populate it with it's note
 // app.get('/articles/:id', function(req, res) {
 //   // TODO
@@ -96,19 +95,20 @@ mongoose.connect(db, function(error) {
 // });
 
 app.get('/scrape', function(req, res) {
-  request("https://www.ultimate-guitar.com/news/", function(err, resonse, body){
-
+  request('https://www.ultimate-guitar.com/news/', function(
+    err,
+    resonse,
+    body
+  ) {
     var $ = cheerio.load(body);
 
     var articles = [];
 
-    $("section.ug-featured--body").each(function(i, element){
-        console.log(element);
+    $('section.ug-featured--body').each(function(i, element) {
+      console.log(element);
     });
+  });
 });
-});
-
-
 
 // // Route for saving/updating an Article's associated Note
 // app.post('/articles/:id', function(req, res) {

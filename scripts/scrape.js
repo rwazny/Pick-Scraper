@@ -1,5 +1,5 @@
-var request = require('request');
-var request = cheerio('cheerio');
+//var request = require('request');
+//var request = cheerio('cheerio');
 
 var scrape = function(cb) {
   request('https://www.ultimate-guitar.com/news/'),
