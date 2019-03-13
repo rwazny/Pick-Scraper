@@ -1,8 +1,8 @@
 //Require Dependencies
 var express = require('express');
 var mongoose = require('mongoose');
-var expressHandlebars = require('express-handlebars');
-var handlebars = require('handlebars');
+
+var exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 var request = require('request');
 var cheerio = require('cheerio');
@@ -24,12 +24,7 @@ require('./config/route')(router);
 app.use(express.static('Public'));
 
 //Connect handlebars to Express app
-app.engine(
-  'handlebars',
-  expressHandlebars({
-    defaultLayout: 'main'
-  })
-);
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 //Use bodyParser in App
