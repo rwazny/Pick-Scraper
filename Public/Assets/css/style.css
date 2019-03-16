@@ -24,6 +24,10 @@ body {
   width: 100%;
   height: 500px;
   font-family: 'Lobster', cursive;
+  text-align: center;
+  font-size: 75px;
+  text-shadow: 4px 4px 8px #8c8686;
+  color: rgb(50, 202, 213);
   padding: 0;
   box-shadow: 10px 5px 20px 2px lightslategray;
   background-image: url('/Assets/Images/GettyImages-846214568.jpg');

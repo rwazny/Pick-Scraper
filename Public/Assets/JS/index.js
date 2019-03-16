@@ -7,7 +7,7 @@ $(document).ready(function() {
   $(document).on('click', '.btn.save', handleArticleSave);
   $(document).on('click', '.scrape-new', handleArticleScrape);
   // Once page is ready, run init page function
-  initPage();
+  // initPage();
 
   function initPage() {
     // Empty article container, run AXAJ request for any unsaved headlines
